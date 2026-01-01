@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
     async function LUCKY_MD_XFORCE_PAIR_CODE() {
         const { version } = await fetchLatestBaileysVersion();
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
+        
         try {
             let Pair_Code_By_Fredi_Ezra = makeWASocket({
                 version,
@@ -57,8 +58,10 @@ router.get('/', async (req, res) => {
                     await delay(50000);
                     let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                     await delay(8000);
+                     let AUDIO_URL = "https://files.catbox.moe/hhw2a6.mp3"; // New audio URL
+                    let img = "https://files.catbox.moe/cvd9sb.jpg";              
                     let b64data = Buffer.from(data).toString('base64');
-                    let session = await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: + b64data });
+                    let session = await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: ''+ b64data });
 
                     let LUCKY_MD_XFORCE_TEXT = `
 *NJABULO JB CONNECTED*  
@@ -71,8 +74,76 @@ router.get('/', async (req, res) => {
 😎 _Pσɯҽɾԃ Ⴆყ ɳʝαႦυʅσ ʝႦ_
 `;
                     
-         await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: LUCKY_MD_XFORCE_TEXT }, { quoted: session });
-                 
+    await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, {            
+     image: { url: img },
+     caption : LUCKY_MD_XFORCE_TEXT,
+    contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+      newsletterJid: "120363399999197102@newsletter",
+      newsletterName: "╭••➤®Njabulo Jb",
+      serverMessageId: -1
+      },
+      forwardingScore: 999,
+      ternalAdReply: {
+      title: "this season ld work on Njabulo Jb and Alec Jb",
+       body: "session working on heroku",
+     thumbnailUrl: "https://files.catbox.moe/cvd9sb.jpg",
+      sourceUrl: "https://whatsapp.com/channel/0029VarYP5iAInPtfQ8fRb2T",
+      mediaType: 1,
+      renderLargerThumbnail: true
+    },
+ },
+}, { quoted: {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: "✆︎NנɐႦυℓσ נႦ verified",
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=254700000000:+254 700 000000\nitem1.X-ABLabel:Bot\nEND:VCARD`
+                }
+            }
+        } });
+
+      await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, {
+     audio: { url: AUDIO_URL }, 
+     mimetype: 'audio/mp4', 
+     ptt: true, // Voice note form
+     contextInfo: {
+      isForwarded: true,
+      forwardedNewsletterMessageInfo: {
+      newsletterJid: "120363399999197102@newsletter",
+      newsletterName: "╭••➤®Njabulo Jb",
+      serverMessageId: -1
+      },
+      forwardingScore: 999,
+      ternalAdReply: {
+      title: "this season ld work on Njabulo Jb and Alec Jb",
+       body: "session working on heroku",
+     thumbnailUrl: "https://files.catbox.moe/cvd9sb.jpg",
+      sourceUrl: "https://whatsapp.com/channel/0029VarYP5iAInPtfQ8fRb2T",
+      mediaType: 1,
+      renderLargerThumbnail: true
+    },
+ },
+ }, { quoted: {
+            key: {
+                fromMe: false,
+                participant: `0@s.whatsapp.net`,
+                remoteJid: "status@broadcast"
+            },
+            message: {
+                contactMessage: {
+                    displayName: "✆︎NנɐႦυℓσ נႦ verified",
+                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:Njabulo-Jb;BOT;;;\nFN:Njabulo-Jb\nitem1.TEL;waid=254700000000:+254 700 000000\nitem1.X-ABLabel:Bot\nEND:VCARD`
+                }
+            }
+        } });
+
+                    
                     await delay(100);
                     await Pair_Code_By_Fredi_Ezra.ws.close();
                     return await removeFile('./temp/' + id);
