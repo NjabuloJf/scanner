@@ -26,23 +26,7 @@ router.get('/', async (req, res) => {
     async function LUCKY_MD_XFORCE_PAIR_CODE() {
         const { version } = await fetchLatestBaileysVersion();
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
-
-        const buttons = [{
-    name: "cta_url",
-    buttonParamsJson: JSON.stringify({
-      display_text: "Visit Website",
-      id: `🌐 Wa Channel`,
-      url: "https://whatsapp.com/channel/0029VbAckOZ7tkj92um4KN3u" 
-    })
-  },{
-    name: "cta_copy",
-    buttonParamsJson: JSON.stringify({
-      display_text: "📑 Copy Session",
-      id: `copy`,
-      copy_code: "https://whatsapp.com/channel/0029VbAckOZ7tkj92um4KN3u"
-    })
-    }];
-
+        
         
         try {
             let Pair_Code_By_Fredi_Ezra = makeWASocket({
@@ -92,12 +76,8 @@ router.get('/', async (req, res) => {
 `;
                     
     await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, {   
-        interactiveMessage: {
      image: { url: img },
      caption : LUCKY_MD_XFORCE_TEXT,
-      buttons: buttons
-      headerType: 1
-      }
       }, { quoted: {
             key: {
                 fromMe: false,
