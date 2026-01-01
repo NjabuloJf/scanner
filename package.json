@@ -1,17 +1,17 @@
 {
-    "description": "topu-sessions",
-    "main": "./toputech.js",
+    "description": "frediezra",
+    "main": "./fredi.js",
   "engines" : { 
     "npm" : ">=9.7.2",
     "node" : ">=20.0.0"
     },
     "scripts": {
-    "start": "node toputech.js"
+    "start": "node fredi.js"
   },
-  "author": "Topu Tech",
+  "author": "FrediAi",
   "license": "GPL-3.0 license",
   "dependencies": {
-    "@whiskeysockets/baileys": "npm:@fizzxydev/baileys-pro",
+    "@whiskeysockets/baileys": "npm:baileys@6.7.20",
     "maher-zubair-baileys": "^6.6.5",
     "qrcode": "^1.5.3",
     "awesome-phonenumber": "^2.64.0",
