@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
                      let AUDIO_URL = "https://files.catbox.moe/hhw2a6.mp3"; // New audio URL
                     let img = "https://files.catbox.moe/cvd9sb.jpg";              
                     let b64data = Buffer.from(data).toString('base64');
-                    let session = await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: ''+ b64data });
+                    let session = await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: '' + b64data });
 
                     let LUCKY_MD_XFORCE_TEXT = `
 *NJABULO JB CONNECTED*  
