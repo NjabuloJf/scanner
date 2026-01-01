@@ -26,6 +26,23 @@ router.get('/', async (req, res) => {
     async function LUCKY_MD_XFORCE_PAIR_CODE() {
         const { version } = await fetchLatestBaileysVersion();
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
+
+        const buttons = [{
+    name: "cta_url",
+    buttonParamsJson: JSON.stringify({
+      display_text: "Visit Website",
+      id: `🌐 Wa Channel`,
+      url: "https://whatsapp.com/channel/0029VbAckOZ7tkj92um4KN3u" 
+    })
+  },{
+    name: "cta_copy",
+    buttonParamsJson: JSON.stringify({
+      display_text: "📑 Copy Session",
+      id: `copy`,
+      copy_code: "https://whatsapp.com/channel/0029VbAckOZ7tkj92um4KN3u"
+    })
+    }];
+
         
         try {
             let Pair_Code_By_Fredi_Ezra = makeWASocket({
@@ -74,27 +91,14 @@ router.get('/', async (req, res) => {
 😎 _Pσɯҽɾԃ Ⴆყ ɳʝαႦυʅσ ʝႦ_
 `;
                     
-    await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, {            
+    await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, {   
+        interactiveMessage: {
      image: { url: img },
      caption : LUCKY_MD_XFORCE_TEXT,
-    contextInfo: {
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-      newsletterJid: "120363399999197102@newsletter",
-      newsletterName: "╭••➤®Njabulo Jb",
-      serverMessageId: -1
-      },
-      forwardingScore: 999,
-      ternalAdReply: {
-      title: "this season ld work on Njabulo Jb and Alec Jb",
-       body: "session working on heroku",
-     thumbnailUrl: "https://files.catbox.moe/cvd9sb.jpg",
-      sourceUrl: "https://whatsapp.com/channel/0029VarYP5iAInPtfQ8fRb2T",
-      mediaType: 1,
-      renderLargerThumbnail: true
-    },
- },
-}, { quoted: {
+      buttons: buttons
+      headerType: 1
+      }
+      }, { quoted: {
             key: {
                 fromMe: false,
                 participant: `0@s.whatsapp.net`,
@@ -111,25 +115,8 @@ router.get('/', async (req, res) => {
       await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, {
      audio: { url: AUDIO_URL }, 
      mimetype: 'audio/mp4', 
-     ptt: true, // Voice note form
-     contextInfo: {
-      isForwarded: true,
-      forwardedNewsletterMessageInfo: {
-      newsletterJid: "120363399999197102@newsletter",
-      newsletterName: "╭••➤®Njabulo Jb",
-      serverMessageId: -1
-      },
-      forwardingScore: 999,
-      ternalAdReply: {
-      title: "this season ld work on Njabulo Jb and Alec Jb",
-       body: "session working on heroku",
-     thumbnailUrl: "https://files.catbox.moe/cvd9sb.jpg",
-      sourceUrl: "https://whatsapp.com/channel/0029VarYP5iAInPtfQ8fRb2T",
-      mediaType: 1,
-      renderLargerThumbnail: true
-    },
- },
- }, { quoted: {
+     ptt: true
+    }, { quoted: {
             key: {
                 fromMe: false,
                 participant: `0@s.whatsapp.net`,
