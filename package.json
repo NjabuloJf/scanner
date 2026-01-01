@@ -6,7 +6,7 @@
     "node" : ">=20.0.0"
     },
     "scripts": {
-    "start": "node toputech.js"
+    "start": "node fredi.js"
   },
   "author": "Topu Tech",
   "license": "GPL-3.0 license",
