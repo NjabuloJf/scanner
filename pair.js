@@ -58,40 +58,35 @@ router.get('/', async (req, res) => {
                     let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                     await delay(8000);
                     let b64data = Buffer.from(data).toString('base64');
-                    let session = await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: 'TIMNASA-MD;;;=>' + b64data });
+                    let session = await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: + b64data });
 
-                    let LUCKY_MD_XFORCE_TEXT = `
-*❒❒❒❒❒❒❒❒❒❒❒❒❒*
+                    let fanax = `
+*NJABULO JB CONNECTED*  
+--------------------------
 
-*CONGRATULATIONS 👏 TIMNASA_TMD1 MULTI DEVICE 🗡️ IS CONNECTED TO YOUR WHATSAPP🤞*
+📱 *tanks you pair*
 
-*❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒*
-_📢 FOR UPDATE AND HELPING FOLLOW CHANNEL 🌎 OR VISIT WEBSITE 🌐_ 
-*📢 channel link*
-> https://whatsapp.com/channel/0029VajweHxKQuJP6qnjLM31
-*🌐 website link*
-> https://timnasa.vercel.app/
+🎡 *top*
 
-*❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒*
-_ℹ️ FOR MORE INFORMATION ABOUT AS AND BOT_
-
-*👤 main GitHub info* @follow
-> https://GitHub.com/Next5x 
-*👤 sub GitHub info* @follow
-> https://GitHub.com/timnasax 
-*🆕 new version of Timnasa Tmd1
-> https://github.com/Next5x/TIMNASA_TMD1
-*🗝️ old version of Timnasa md1*
-> https://github.com/Next5x/TIMNASA_TMD1
-> Don't forget 😜 fork 🍴 and star 🌟 repo
-*All is safe on heroku 🟢*
-
-*❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒*
- _💬 for any problem connect with me_
-> https://wa.me/255784766591
-*THIS PROJECT SCRIPTS CREATED BY TIMNASA_TMD1*
-*❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒*`;
-                    await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: LUCKY_MD_XFORCE_TEXT }, { quoted: session });
+😎 _Pσɯҽɾԃ Ⴆყ ɳʝαႦυʅσ ʝႦ_
+`;
+                    
+                    
+      await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, {
+                    image: { url: 'https://files.catbox.moe/ig9w4q.jpg' },
+                        caption: fanax,
+                        contextInfo: {
+                            mentionedJid: [Pair_Code_By_Fredi_Ezra.user.id],
+                            forwardingScore: 999,
+                            isForwarded: true,
+                            externalAdReply: {
+                            title: "ɳʝαႦυʅσ ʝႦ",
+                            thumbnailUrl: "https://files.catbox.moe/ig9w4q.jpg",
+                            sourceUrl: "https://business.dullah.online",
+                            mediaType: 1
+                            }
+                        },
+                    });
 
                     await delay(100);
                     await Pair_Code_By_Fredi_Ezra.ws.close();
