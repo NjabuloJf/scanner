@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 __path = process.cwd()
@@ -18,7 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.listen(PORT, () => {
     console.log(`
-Topu-Qr-Scanner is Live
+
+Topu-Qr-Scanner is Lives
 
  Server running on http://localhost:` + PORT)
 })
