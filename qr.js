@@ -1,151 +1,116 @@
 const PastebinAPI = require('pastebin-js'),
-pastebin = new PastebinAPI('EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL');
-const { makeid } = require('./id');
+pastebin = new PastebinAPI('EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL')
+const {makeid} = require('./id');
 const QRCode = require('qrcode');
 const express = require('express');
-const zlib = require('zlib'); // For compression
 const path = require('path');
 const fs = require('fs');
-let router = express.Router();
+let router = express.Router()
 const pino = require("pino");
 const {
-    default: Ibrahim_Adams,
-    useMultiFileAuthState,
-    Browsers,
-    delay,
+	default: Fredi_Ezra,
+	useMultiFileAuthState,
+	jidNormalizedUser,
+	Browsers,
+	delay,
+	makeInMemoryStore,
 } = require("@whiskeysockets/baileys");
 
 function removeFile(FilePath) {
-    if (!fs.existsSync(FilePath)) return false;
-    fs.rmSync(FilePath, { recursive: true, force: true });
-}
-
+	if (!fs.existsSync(FilePath)) return false;
+	fs.rmSync(FilePath, {
+		recursive: true,
+		force: true
+	})
+};
+const {
+	readFile
+} = require("node:fs/promises")
 router.get('/', async (req, res) => {
-    const id = makeid();
-    let responseSent = false;
+	const id = makeid();
+	async function LUCKY_MD_XFORCE_QR_CODE() {
+		const {
+			state,
+			saveCreds
+		} = await useMultiFileAuthState('./temp/' + id)
+		try {
+			let Qr_Code_By_Fredi_Ezra = Fredi_Ezra({
+				auth: state,
+				printQRInTerminal: false,
+				logger: pino({
+					level: "silent"
+				}),
+				browser: Browsers.macOS("Desktop"),
+			});
 
-    async function BWM_XMD_QR_CODE() {
-        const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
-        try {
-            let Qr_Code_By_Ibrahim_Adams = Ibrahim_Adams({
-                auth: state,
-                printQRInTerminal: false,
-                logger: pino({ level: "silent" }),
-                browser: Browsers.macOS("Desktop"),
-            });
+			Qr_Code_By_Fredi_Ezra.ev.on('creds.update', saveCreds)
+			Qr_Code_By_Fredi_Ezra.ev.on("connection.update", async (s) => {
+				const {
+					connection,
+					lastDisconnect,
+					qr
+				} = s;
+				if (qr) await res.end(await QRCode.toBuffer(qr));
+				if (connection == "open") {
+					await delay(50000);
+					let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
+					await delay(8000);
+				   let b64data = Buffer.from(data).toString('base64');
+				   let session = await Qr_Code_By_Fredi_Ezra.sendMessage(Qr_Code_By_Fredi_Ezra.user.id, { text: 'TIMNASA-MD;;;=>' + b64data });
+	
+				   let LUCKY_MD_XFORCE_TEXT = `
+*❒❒❒❒❒❒❒❒❒❒❒❒❒*
 
-            Qr_Code_By_Ibrahim_Adams.ev.on('creds.update', saveCreds);
-            Qr_Code_By_Ibrahim_Adams.ev.on("connection.update", async (s) => {
-                const { connection, lastDisconnect, qr } = s;
-                if (qr && !responseSent) {
-                    const qrImage = await QRCode.toDataURL(qr);
-                    const htmlContent = `
-                    <!DOCTYPE html>
-                    <html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>QR Code Scanner</title>
-                        <style>
-                            body {
-                                margin: 0;
-                                overflow: hidden;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                height: 100vh;
-                                background: black;
-                            }
-                            video {
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
-                                z-index: -1;
-                            }
-                            img {
-                                z-index: 1;
-                                border: 5px solid white;
-                                border-radius: 15px;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <video autoplay muted loop>
-                            <source src="https://files.catbox.moe/d5ch2k.mp4">
-                        </video>
-                        <img src="${qrImage}" alt="Scan this QR code">
-                    </body>
-                    </html>
-                    `;
-                    res.send(htmlContent);
-                    responseSent = true;
-                }
+*CONGRATULATIONS 👏 TIMNASA_TMD1 MULTI DEVICE 🗡️ IS CONNECTED TO YOUR WHATSAPP🤞*
 
-                if (connection === "open") {
-                    await delay(10000);
-                    let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
-                    await delay(1000);
+*❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒*
+_📢 FOR UPDATE AND HELPING FOLLOW CHANNEL 🌎 OR VISIT WEBSITE 🌐_ 
+*📢 channel link*
+> https://whatsapp.com/channel/0029VajweHxKQuJP6qnjLM31
+*🌐 website link*
+> https://timnasa.vercel.app/
 
-                    let compressedData = zlib.gzipSync(data);
-                    let b64data = compressedData.toString('base64');
+*❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒*
+_ℹ️ FOR MORE INFORMATION ABOUT AS AND BOT_
 
-                    await Qr_Code_By_Ibrahim_Adams.sendMessage(Qr_Code_By_Ibrahim_Adams.user.id, { text: 'DULLAH-MD;;;' + b64data });
+*👤 main GitHub info* @follow
+> https://GitHub.com/Next5x 
+*👤 sub GitHub info* @follow
+> https://GitHub.com/timnasax
+*🆕 new version of Timnasa Tmd1
+> https://github.com/Next5x/TIMNASA_TMD1
+*🗝️ old version of Timnasa Tmd1*
+> https://github.com/Next5x/TIMNASA_TMD1
+> Don't forget 😜 fork 🍴 and star 🌟 repo
+*All is safe on heroku 🟢*
 
-                    let BWM_XMD_TEXT = `
-🔐 *Session Successfully Connected*  
-*Welcome to DULLAH XMD Platform*  
+*❒❒❒❒❒❒❒❒❒❒❒❒❒❒❒*
+ _💬 for any problem connect with me_
+> https://wa.me/255784766591
+*THIS PROJECT SCRIPTS CREATED BY TIMNASA_TMD1*
+*❒❒❒❒❒❒❒❒❒❒❒❒❒❒*`
+	 await Qr_Code_By_Fredi_Ezra.sendMessage(Qr_Code_By_Fredi_Ezra.user.id,{text:LUCKY_MD_XFORCE_TEXT},{quoted:session})
 
-📌 *Next Steps & Resources:*  
 
-🌍 *Bot Website*  
-Explore bot features and updates  
-> https://www.abdallahsalimjuma.site  
 
-💻 *Explore Codebase*  
-Contribute or review our open-source projects  
-> https://github.com/abdallahsalimjuma 
-
-🌍 *Enterprise Solutions*  
-Discover business automation services  
-> https://business.dullah.online  
-
-🔧 *Powered by DULLAH XMD Technologies*  
-_Innovative Solutions Engineered by Dullah_  
-                    `;
-
-                    await Qr_Code_By_Ibrahim_Adams.sendMessage(Qr_Code_By_Ibrahim_Adams.user.id, {
-                        image: { url: 'https://files.catbox.moe/1wqehg.mp3' },
-                        caption: BWM_XMD_TEXT
-                    });
-
-                    await Qr_Code_By_Ibrahim_Adams.sendMessage(Qr_Code_By_Ibrahim_Adams.user.id, {
-                        audio: { url: 'https://files.catbox.moe/1wqehg.mp3' },
-                        mimetype: 'audio/mp4',
-                        ptt: true
-                    });
-
-                    await delay(100);
-                    await Qr_Code_By_Ibrahim_Adams.ws.close();
-                    return await removeFile('./temp/' + id);
-                } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
-                    await delay(10000);
-                    BWM_XMD_QR_CODE();
-                }
-            });
-        } catch (err) {
-            if (!responseSent) {
-                res.json({ code: "Service is Currently Unavailable" });
-                responseSent = true;
-            }
-            console.log(err);
-            await removeFile('./temp/' + id);
-        }
-    }
-
-    return await BWM_XMD_QR_CODE();
+					await delay(100);
+					await Qr_Code_By_Fredi_Ezra.ws.close();
+					return await removeFile("temp/" + id);
+				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
+					await delay(10000);
+					LUCKY_MD_XFORCE_QR_CODE();
+				}
+			});
+		} catch (err) {
+			if (!res.headersSent) {
+				await res.json({
+					code: "Service is Currently Unavailable"
+				});
+			}
+			console.log(err);
+			await removeFile("temp/" + id);
+		}
+	}
+	return await LUCKY_MD_XFORCE_QR_CODE()
 });
-
-module.exports = router;
+module.exports = router
