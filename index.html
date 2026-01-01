@@ -3,902 +3,204 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toxic MD Bot Pairing</title>
+  <title>Dullad md Pairing</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      background: #0a0e1a;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: #c0d0ff;
-      overflow: hidden;
-      position: relative;
+      height: 100vh;
     }
 
-    .tech-background {
+    video {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
       z-index: -1;
-      overflow: hidden;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(255, 50, 50, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(50, 255, 50, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(50, 150, 255, 0.15) 0%, transparent 50%),
-        linear-gradient(180deg, #0a1525 0%, #051020 100%);
-    }
-
-    .atom-container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-    }
-
-    .atom {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .atom-ring {
-      position: absolute;
-      border: 1px solid rgba(0, 255, 255, 0.1);
-      border-radius: 50%;
-      animation: rotate 20s linear infinite;
-    }
-
-    .atom-ring:nth-child(1) {
-      width: 300px;
-      height: 300px;
-      animation-duration: 25s;
-      animation-direction: reverse;
-      border-color: rgba(255, 50, 50, 0.15);
-    }
-
-    .atom-ring:nth-child(2) {
-      width: 400px;
-      height: 400px;
-      animation-duration: 30s;
-      border-color: rgba(50, 255, 50, 0.15);
-    }
-
-    .atom-ring:nth-child(3) {
-      width: 500px;
-      height: 500px;
-      animation-duration: 35s;
-      animation-direction: reverse;
-      border-color: rgba(50, 150, 255, 0.15);
-    }
-
-    .atom-nucleus {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: radial-gradient(circle, #00ffcc, #00aaff);
-      border-radius: 50%;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 20px #00ffcc;
-    }
-
-    .atom-electron {
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #00aaff;
-      border-radius: 50%;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: 0 0 10px #00aaff;
-    }
-
-    .atom-ring:nth-child(1) .atom-electron {
-      background: #ff3366;
-      box-shadow: 0 0 10px #ff3366;
-    }
-
-    .atom-ring:nth-child(2) .atom-electron {
-      background: #33ff66;
-      box-shadow: 0 0 10px #33ff66;
-    }
-
-    .atom-ring:nth-child(3) .atom-electron {
-      background: #3366ff;
-      box-shadow: 0 0 10px #3366ff;
-    }
-
-    @keyframes rotate {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
-    .snowflake {
-      position: absolute;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 20px;
-      animation: fall linear infinite;
-      text-shadow: 0 0 5px rgba(0, 170, 255, 0.5);
-    }
-
-    @keyframes fall {
-      0% {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    .christmas-light {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      animation: lightTwinkle 2s infinite;
-    }
-
-    @keyframes lightTwinkle {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; }
     }
 
     .container {
-      width: 100%;
-      max-width: 480px;
-      padding: 20px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-      will-change: opacity, transform;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      justify-content: center;
+      height: 100%;
+      color: #333;
     }
 
     .box {
-      position: relative;
-      background: linear-gradient(135deg, rgba(20, 30, 50, 0.95), rgba(10, 20, 40, 0.95));
-      padding: 40px 35px;
-      border-radius: 20px;
+      width: 330px;
+      height: 360px;
+      padding: 20px;
       text-align: center;
-      border: 1px solid rgba(0, 255, 255, 0.3);
-      box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(0, 255, 255, 0.15),
-        inset 0 0 30px rgba(0, 255, 255, 0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transform: translateZ(0);
-      overflow: hidden;
+      background: url("https://files.catbox.moe/ig9w4q.jpg") no-repeat center/cover;
+      background-size: cover;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0, 128, 255, 0.7);
+      opacity: 0;
+      animation: fadeIn 1s forwards;
     }
 
-    .box::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #ff3366, #33ff66, #3366ff, #00ffcc);
-      z-index: -1;
-      border-radius: 22px;
-      opacity: 0.3;
-      animation: borderGlow 4s linear infinite;
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
 
-    @keyframes borderGlow {
-      0%, 100% { opacity: 0.3; }
-      25% { opacity: 0.5; }
-      50% { opacity: 0.3; }
-      75% { opacity: 0.5; }
-    }
-
-    .box:hover {
-      transform: translateY(-5px);
-      box-shadow: 
-        0 15px 40px rgba(0, 0, 0, 0.6),
-        0 0 40px rgba(0, 255, 255, 0.2),
-        inset 0 0 40px rgba(0, 255, 255, 0.1);
-    }
-
-    .bot-icon {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 20px;
-      position: relative;
-      animation: botFloat 3s ease-in-out infinite;
-    }
-
-    @keyframes botFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(5deg); }
-    }
-
-    .bot-head {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, #3366ff, #00ffcc);
-      border-radius: 50% 50% 40% 40%;
-      position: relative;
-      margin: 0 auto;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
-    }
-
-    .bot-screen {
-      width: 50px;
-      height: 25px;
-      background: rgba(0, 10, 20, 0.9);
-      border-radius: 10px;
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      overflow: hidden;
-      border: 2px solid rgba(0, 255, 255, 0.5);
-    }
-
-    .screen-content {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .screen-line {
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background: #33ff66;
-      animation: scanLine 2s linear infinite;
-    }
-
-    @keyframes scanLine {
-      0% { top: 0; opacity: 1; }
-      100% { top: 100%; opacity: 0; }
-    }
-
-    .screen-dot {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #ff3366;
-      border-radius: 50%;
-      animation: pulse 1.5s infinite;
-    }
-
-    .screen-dot:nth-child(2) { top: 5px; left: 10px; animation-delay: 0.2s; background: #33ff66; }
-    .screen-dot:nth-child(3) { top: 15px; left: 25px; animation-delay: 0.4s; background: #3366ff; }
-    .screen-dot:nth-child(4) { top: 5px; left: 40px; animation-delay: 0.6s; background: #00ffcc; }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 0.3; transform: scale(0.8); }
-      50% { opacity: 1; transform: scale(1.2); }
-    }
-
-    .bot-body {
-      width: 60px;
-      height: 10px;
-      background: linear-gradient(90deg, #ff3366, #33ff66);
-      border-radius: 5px;
-      position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    #text {
-      color: #c0d0ff;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    h3 {
-      position: relative;
-      color: #c0d0ff;
-      font-size: 28px;
-      font-weight: 700;
-      margin: 20px 0 25px;
-      background: linear-gradient(45deg, #ff3366, #33ff66, #3366ff, #00ffcc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 10px rgba(0, 170, 255, 0.3);
-    }
-
-    h3::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #00ffcc, transparent);
-      animation: widthPulse 3s infinite alternate;
-    }
-
-    @keyframes widthPulse {
-      0% { width: 80px; opacity: 0.7; }
-      100% { width: 120px; opacity: 1; }
-    }
-
-    .subtitle {
-      color: #a0b8ff;
-      font-size: 14px;
-      margin-bottom: 25px;
-      font-weight: 300;
-      opacity: 0.8;
+    .centered-text {
+      text-align: center;
+      color: green;
     }
 
     .input-container {
       display: flex;
-      gap: 12px;
-      margin: 20px 0 25px;
-      background: rgba(20, 30, 50, 0.8);
-      padding: 12px;
-      border-radius: 15px;
-      border: 1px solid rgba(0, 255, 255, 0.3);
+      margin-top: 10px;
+      background: linear-gradient(45deg, #007bff 0%, #32CD32 100%);
+      border-radius: 50px;
+      padding: 0.5rem;
       width: 100%;
-      justify-content: center;
-      align-items: center;
-      position: relative;
+      max-width: 300px;
       transition: all 0.3s ease;
-      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .input-container:hover {
-      border-color: rgba(0, 255, 255, 0.6);
-      box-shadow: 
-        inset 0 2px 10px rgba(0, 0, 0, 0.3),
-        0 0 15px rgba(0, 255, 255, 0.2);
     }
 
     .input-container input {
-      flex: 1;
-      padding: 15px;
+      border-radius: 50px;
       border: none;
-      border-radius: 12px;
-      background: rgba(30, 45, 70, 0.9);
-      color: #ffffff;
-      font-size: 16px;
-      text-align: center;
-      max-width: 220px;
+      padding: 0.8rem 1rem;
+      width: 70%;
       transition: all 0.3s ease;
-      font-family: 'Courier New', monospace;
-      letter-spacing: 1px;
-    }
-
-    .input-container input::placeholder {
-      color: #a0b8ff;
-      font-style: italic;
-      text-align: center;
-      opacity: 0.7;
+      font-size: 1rem;
     }
 
     .input-container input:focus {
       outline: none;
-      background: rgba(40, 60, 90, 0.9);
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 8px rgba(0, 128, 255, 0.7);
     }
 
     .input-container button {
-      padding: 15px 28px;
-      background: linear-gradient(135deg, #3366ff 0%, #00ffcc 100%);
-      color: white;
       border: none;
-      border-radius: 30px;
-      font-size: 15px;
-      font-weight: 600;
+      border-radius: 50px;
+      padding: 1rem;
+      background: linear-gradient(135deg, #32CD32 0%, #007bff 100%);
+      color: white;
+      font-weight: bold;
+      width: 30%;
       cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      transform: translateZ(0);
-      letter-spacing: 0.5px;
-    }
-
-    .input-container button::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.4s ease, height 0.4s ease;
-    }
-
-    .input-container button:hover::after {
-      width: 120px;
-      height: 120px;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
     .input-container button:hover {
-      background: linear-gradient(135deg, #00ffcc 0%, #3366ff 100%);
+      background: linear-gradient(135deg, #007bff 0%, #32CD32 100%);
       transform: scale(1.05);
-      box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
     }
 
-    .input-container button:active {
-      transform: scale(0.98);
-    }
-
-    #pair {
-      margin-top: 25px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-    }
-
-    #pair a, #pair font {
-      color: #c0d0ff;
-      font-size: 18px;
-      font-weight: bold;
-      opacity: 0;
-      animation: slideIn 0.4s ease forwards;
-      transition: color 0.3s ease;
-    }
-
-    @keyframes slideIn {
-      0% { opacity: 0; transform: translateY(15px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    #pair a:hover, #pair font:hover {
-      color: #00ffcc;
-    }
-
-    #copy {
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 18px;
-      user-select: none;
-      transition: color 0.3s ease;
-      font-family: 'Courier New', monospace;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: 1px solid rgba(0, 255, 255, 0.3);
-    }
-
-    #copy:hover {
-      color: #00ffcc;
-      border-color: rgba(0, 255, 255, 0.6);
-    }
-
-    .copy-button {
-      padding: 12px 25px;
-      background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(51, 102, 255, 0.2));
-      color: #00ffcc;
-      border: 1px solid rgba(0, 255, 255, 0.5);
-      border-radius: 25px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      animation: slideIn 0.4s ease forwards 0.1s;
-      position: relative;
-      overflow: hidden;
-      transform: translateZ(0);
-    }
-
-    .copy-button:hover {
-      background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(51, 102, 255, 0.3));
-      border-color: rgba(0, 255, 255, 0.8);
-      transform: scale(1.05);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-    }
-
-    .copy-button:active {
-      transform: scale(0.98);
-    }
-
-    .copy-button.copied {
-      background: linear-gradient(135deg, rgba(40, 167, 69, 0.2), rgba(40, 167, 69, 0.3));
-      border-color: #33ff66;
-      color: #33ff66;
-    }
-
-    .copy-button.copied i {
-      color: #33ff66;
-    }
-
-    .loader-container {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      margin: 20px 0;
-    }
-
-    .loader {
-      width: 50px;
-      height: 50px;
-      position: relative;
-      margin-bottom: 10px;
-    }
-
-    .loader .orbital {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      animation: rotate 2s linear infinite;
-    }
-
-    .loader .dot {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #3366ff;
-      border-radius: 50%;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: pulseDot 1.5s ease-in-out infinite;
-    }
-
-    .loader .dot:nth-child(2) {
-      animation-delay: 0.5s;
-      background: #33ff66;
-    }
-
-    .loader .dot:nth-child(3) {
-      animation-delay: 1s;
-      background: #ff3366;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { transform: translateX(-50%) scale(0.8); opacity: 0.5; }
-      50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
-    }
-
-    .loader-text {
-      color: #a0b8ff;
-      font-size: 14px;
-      margin-top: 10px;
-      text-align: center;
-      font-weight: 300;
-    }
-
-    .loader-text::after {
-      content: '';
-      animation: loadingDots 1.5s infinite;
-    }
-
-    @keyframes loadingDots {
-      0%, 20% { content: ''; }
-      40% { content: '.'; }
-      60% { content: '..'; }
-      80%, 100% { content: '...'; }
-    }
-
-    .bot-message {
-      color: #a0b8ff;
-      font-size: 13px;
+    #waiting-message {
       margin-top: 20px;
-      padding: 10px 15px;
-      background: rgba(0, 255, 255, 0.05);
-      border-radius: 10px;
-      border-left: 3px solid #00ffcc;
-      text-align: left;
-      width: 100%;
-      font-style: italic;
+      font-size: 1.2rem;
+      color: white;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
+    .bot {
+      margin-top: 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 12px;
+      color: yellow;
+      box-shadow: 0 0 20px rgba(0, 128, 255, 0.7);
+      transition: all 0.3s ease;
     }
 
-    @media (max-width: 500px) {
-      .container {
-        padding: 15px;
-      }
-
-      .box {
-        padding: 30px 25px;
-        border-radius: 18px;
-      }
-
-      .bot-icon {
-        width: 70px;
-        height: 70px;
-      }
-
-      .bot-head {
-        width: 60px;
-        height: 60px;
-      }
-
-      .bot-screen {
-        width: 45px;
-        height: 20px;
-      }
-
-      h3 {
-        font-size: 24px;
-      }
-
-      .input-container {
-        flex-direction: column;
-        padding: 10px;
-        gap: 10px;
-      }
-
-      .input-container input,
-      .input-container button {
-        width: 100%;
-        padding: 14px;
-        font-size: 14px;
-        max-width: 100%;
-      }
-
-      #pair a, #pair font {
-        font-size: 16px;
-      }
-
-      .copy-button {
-        padding: 10px 20px;
-        font-size: 13px;
-      }
+    h3, h6 {
+      margin: 0.5rem 0;
     }
+
   </style>
 </head>
 <body>
-  <div class="tech-background"></div>
-  
-  <div class="atom-container">
-    <div class="atom">
-      <div class="atom-ring">
-        <div class="atom-electron"></div>
-      </div>
-      <div class="atom-ring">
-        <div class="atom-electron"></div>
-      </div>
-      <div class="atom-ring">
-        <div class="atom-electron"></div>
-      </div>
-      <div class="atom-nucleus"></div>
-    </div>
-  </div>
+
+  <video autoplay muted loop>
+    <source src="https://files.catbox.moe/dvc8y2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <div class="container">
     <div class="box" id="box">
-      <div id="text">
-        <div class="bot-icon">
-          <div class="bot-head">
-            <div class="bot-screen">
-              <div class="screen-content">
-                <div class="screen-line"></div>
-                <div class="screen-dot"></div>
-                <div class="screen-dot"></div>
-                <div class="screen-dot"></div>
-                <div class="screen-dot"></div>
-              </div>
-            </div>
-          </div>
-          <div class="bot-body"></div>
-        </div>
+      <h3 class="centered-text">𝑺𝑬𝑺𝑺𝑰𝑶𝑵 𝑺𝑪𝑨𝑵𝑵𝑬𝑹</h3>
+      <h6 class="centered-text">𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑾𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝑵𝒖𝒎𝒃𝒆𝒓 𝑾𝒊𝒕𝒉 𝑪𝒐𝒖𝒏𝒕𝒓𝒚 𝑪𝒐𝒅𝒆 𝑾𝒊𝒕𝒉𝒐𝒖𝒕 (+).</h6>
+      <h6 class="centered-text">DULLAH-MD</h6>
 
-        <h3>TOXIC MD BOT</h3>
-        <div class="subtitle">Secure Pairing Code Generator</div>
-
-        <div class="input-container" id="input-container">
-          <input placeholder="2547xxxxxxx" type="tel" id="number" pattern="[0-9]*" placeholder="Enter WhatsApp Number" name="">
-          <button id="submit">
-            <i class="fas fa-bolt"></i> Generate Code
-          </button>
-        </div>
-
-        <div class="loader-container" id="waiting-message">
-          <div class="loader">
-            <div class="orbital">
-              <div class="dot"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-            </div>
-          </div>
-          <div class="loader-text">Processing Request</div>
-        </div>
-
-        <main id="pair"></main>
-
-        <div class="bot-message">
-          <i class="fas fa-robot"></i> Secure pairing code will be generated for your WhatsApp number.
-        </div>
+      <div class="input-container">
+        <input placeholder="Eg 255xxxxxx" type="number" id="number" name="number">
+        <button id="submit">Enter</button>
       </div>
+
+      <a id="waiting-message" class="centered-text" style="display: none;">Getting Code...</a>
+      <br><br>
+      <main id="pair"></main>
     </div>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+></script>
   <script>
     let a = document.getElementById("pair");
     let b = document.getElementById("submit");
     let c = document.getElementById("number");
-    let waitingMessage = document.getElementById("waiting-message");
-    let inputContainer = document.getElementById("input-container");
+    let box = document.getElementById("box");
 
-    async function Copy(button) {
-      let codeElement = document.getElementById("copy");
-      let text = codeElement.innerText.replace('CODE: ', '');
-      try {
-        await navigator.clipboard.writeText(text);
-        button.classList.add('copied');
-        button.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        setTimeout(() => {
-          button.classList.remove('copied');
-          button.innerHTML = '<i class="fas fa-copy"></i> Copy Code';
-        }, 2000);
-      } catch (err) {
-        button.innerHTML = '<i class="fas fa-exclamation"></i> Failed!';
-        setTimeout(() => {
-          button.innerHTML = '<i class="fas fa-copy"></i> Copy Code';
-        }, 2000);
-      }
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('YOUR CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color: black; font-weight: bold";
+      obj.size = "5";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color: white; font-weight: bold";
+        obj.size = "5";
+      }, 500);
     }
 
     b.addEventListener("click", async (e) => {
       e.preventDefault();
-      
-      b.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        b.style.transform = 'scale(1)';
-      }, 150);
-
       if (!c.value) {
-        a.innerHTML = '<a style="color:#ff3366;font-weight:bold"><i class="fas fa-exclamation-circle"></i> Please enter your WhatsApp number</a><br><br>';
+        a.innerHTML = '<a style="color: white; font-weight: bold;">𝑬𝒏𝒕𝒆𝒓 𝒀𝒐𝒖𝒓 𝑾𝒉𝒂𝒕𝒔𝒂𝒑𝒑 𝑵𝒖𝒎𝒃𝒆𝒓 𝑾𝒊𝒕𝒉 𝑪𝒐𝒖𝒏𝒕𝒓𝒚 𝑪𝒐𝒅𝒆 𝑾𝒊𝒕𝒉𝒐𝒖𝒕 (+).</a><br><br>';
+      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<a style="color: white; font-weight: bold;">Invalid Number Format</a><br><br>';
       } else {
-        const Toxic_Tech = c.value.replace(/[^0-9]/g, "");
-        if (Toxic_Tech.length < 11) {
-          a.innerHTML = '<a style="color:#ff3366;font-weight:bold"><i class="fas fa-times-circle"></i> Invalid number format</a><br><br>';
-        } else {
-          let bb = "";
-          let bbc = "";
-          const cc = Toxic_Tech.split('');
-          cc.map(a => {
-            bbc += a;
-            if (bbc.length == 3) {
-              bb += " " + a;
-            } else if (bbc.length == 8) {
-              bb += " " + a;
-            } else {
-              bb += a;
-            }
-          });
-          c.value = "+" + bb;
-          c.style = "color:#33ff66;font-size:16px;font-weight:bold";
-          
-          waitingMessage.style.display = 'flex';
-          a.innerHTML = '';
-          
-          try {
-            setTimeout(async () => {
-              try {
-                let { data } = await axios(`/code?number=${Toxic_Tech}`);
-                waitingMessage.style.display = 'none';
-                let code = data.code || "SERVICE_OFFLINE";
-                
-                let formattedCode = code.replace(/(.{4})/g, '$1 ').trim();
-                
-                a.innerHTML = `
-                  <font id="copy" style="color:#ffffff;font-weight:bold;font-size:20px">
-                    <i class="fas fa-key"></i> CODE: 
-                    <span style="color:#33ff66;font-weight:bold;letter-spacing:2px">${formattedCode}</span>
-                  </font>
-                  <button class="copy-button" onclick="Copy(this)">
-                    <i class="fas fa-copy"></i> Copy Code
-                  </button>
-                  <div style="color:#a0b8ff;font-size:12px;margin-top:10px">
-                    <i class="fas fa-clock"></i> Code valid for 5 minutes
-                  </div>
-                `;
-              } catch (error) {
-                waitingMessage.style.display = 'none';
-                a.innerHTML = '<a style="color:#ff3366;font-weight:bold"><i class="fas fa-exclamation-triangle"></i> Network error. Please try again.</a><br><br>';
-              }
-            }, 1500);
-            
-          } catch (error) {
-            waitingMessage.style.display = 'none';
-            a.innerHTML = '<a style="color:#ff3366;font-weight:bold"><i class="fas fa-exclamation-triangle"></i> Error generating code</a><br><br>';
+        const bc = c.value.replace(/[^0-9]/g, "");
+        let bb = "";
+        let bbc = "";
+        const cc = bc.split('');
+        cc.map(a => {
+          bbc += a;
+          if (bbc.length == 3) {
+            bb += " " + a;
+          } else if (bbc.length == 8) {
+            bb += " " + a;
+          } else {
+            bb += a;
           }
-        }
+        });
+        c.type = "text";
+        c.value = "+" + bb;
+        c.style = "color: black; font-size: 20px";
+        a.innerHTML = '<a style="color: white; font-weight: bold;">Generating Code...</a><br><br>';
+        let { data } = await axios(`/code?number=${bc}`);
+        let code = data.code || "Service is Currently Unavailable";
+        a.innerHTML = '<font id="copy" onclick="Copy()" style="color: blue; font-weight: bold;" size="5">𝒀𝒐𝒖𝒓 𝑪𝒐𝒅𝒆: <span style="color: yellow; font-weight: bold;">' + code + '</span></font><br><br><br>';
       }
-    });
-
-    c.addEventListener("focus", () => {
-      inputContainer.style.borderColor = "rgba(0, 255, 255, 0.7)";
-      inputContainer.style.boxShadow = "0 0 20px rgba(0, 255, 255, 0.2)";
-    });
-
-    c.addEventListener("blur", () => {
-      inputContainer.style.borderColor = "rgba(0, 255, 255, 0.3)";
-      inputContainer.style.boxShadow = "inset 0 2px 10px rgba(0, 0, 0, 0.3)";
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      requestAnimationFrame(() => {
-        document.querySelector('.container').style.opacity = 1;
-        
-        const atomContainer = document.querySelector('.atom-container');
-        for (let i = 0; i < 15; i++) {
-          const snowflake = document.createElement('div');
-          snowflake.className = 'snowflake';
-          snowflake.innerHTML = '❄';
-          snowflake.style.cssText = `
-            left: ${Math.random() * 100}%;
-            font-size: ${Math.random() * 15 + 10}px;
-            animation-duration: ${Math.random() * 5 + 5}s;
-            animation-delay: ${Math.random() * 5}s;
-            color: hsl(${Math.random() * 60 + 200}, 100%, ${Math.random() * 30 + 70}%);
-          `;
-          atomContainer.appendChild(snowflake);
-        }
-        
-        for (let i = 0; i < 30; i++) {
-          const light = document.createElement('div');
-          light.className = 'christmas-light';
-          light.style.cssText = `
-            top: ${Math.random() * 100}%;
-            left: ${Math.random() * 100}%;
-            background: hsl(${Math.random() * 360}, 100%, 70%);
-            animation-delay: ${Math.random() * 2}s;
-            width: ${Math.random() * 8 + 4}px;
-            height: ${Math.random() * 8 + 4}px;
-          `;
-          atomContainer.appendChild(light);
-        }
-      });
     });
   </script>
 </body>
