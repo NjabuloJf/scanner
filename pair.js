@@ -60,7 +60,7 @@ router.get('/', async (req, res) => {
                     let b64data = Buffer.from(data).toString('base64');
                     let session = await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: + b64data });
 
-                    let fanax = `
+                    let LUCKY_MD_XFORCE_TEXT = `
 *NJABULO JB CONNECTED*  
 --------------------------
 
@@ -71,23 +71,8 @@ router.get('/', async (req, res) => {
 😎 _Pσɯҽɾԃ Ⴆყ ɳʝαႦυʅσ ʝႦ_
 `;
                     
-                    
-      await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, {
-                    image: { url: 'https://files.catbox.moe/ig9w4q.jpg' },
-                        caption: fanax,
-                        contextInfo: {
-                            mentionedJid: [Pair_Code_By_Fredi_Ezra.user.id],
-                            forwardingScore: 999,
-                            isForwarded: true,
-                            externalAdReply: {
-                            title: "ɳʝαႦυʅσ ʝႦ",
-                            thumbnailUrl: "https://files.catbox.moe/ig9w4q.jpg",
-                            sourceUrl: "https://business.dullah.online",
-                            mediaType: 1
-                            }
-                        },
-                    });
-
+         await Pair_Code_By_Fredi_Ezra.sendMessage(Pair_Code_By_Fredi_Ezra.user.id, { text: LUCKY_MD_XFORCE_TEXT }, { quoted: session });
+                 
                     await delay(100);
                     await Pair_Code_By_Fredi_Ezra.ws.close();
                     return await removeFile('./temp/' + id);
