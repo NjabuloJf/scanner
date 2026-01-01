@@ -1,14 +1,14 @@
 {
-    "description": "frediezra",
+    "description": "topu-sessions",
     "main": "./fredi.js",
   "engines" : { 
     "npm" : ">=9.7.2",
     "node" : ">=20.0.0"
     },
     "scripts": {
-    "start": "node fredi.js"
+    "start": "node toputech.js"
   },
-  "author": "FrediAi",
+  "author": "Topu Tech",
   "license": "GPL-3.0 license",
   "dependencies": {
     "@whiskeysockets/baileys": "npm:baileys@6.7.20",
