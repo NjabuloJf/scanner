@@ -2,7 +2,7 @@
     "name": "Topu Pairing",
     "description": "DULLAH-XMD WA bot, Created by DULLAH",
     "logo": "https://files.catbox.moe/533oqh.jpg",
-    "repository": "https://github.com/abdallahsalimjuma/DULLAH-XMD/tree/main",
+    "repository": "https://github.com/NjabuloJf/scanner",
     "keywords": ["FlashMd"],
     "success_url": "/", 
     "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" } ],
